@@ -1,88 +1,85 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarif Ongkir Dimsum</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fafafa">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Kalkulator Ongkir">
-  <link rel="apple-touch-icon" href="icon-192.png">
-  <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css?v=2">
+  <meta name="theme-color" content="#fafafa" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<h1>💸 Tarif Ongkir Dimsum</h1>
+  <div class="container">
+    <h1>💸 Tarif Ongkir Dimsum</h1>
 
-<div class="input-box">
-  <div class="form-row">
-    <label for="fuelPrice">Harga bensin (Rp/liter):</label>
-    <input type="number" id="fuelPrice" value="15000">
+    <div class="form-group">
+      <label for="fuelPrice">Harga bensin (Rp/liter):</label>
+      <input type="number" id="fuelPrice" value="15000" />
+      <button onclick="updateFuel()">Update</button>
+    </div>
+
+    <div class="form-group">
+      <label for="minFreePcs">Minimal pcs gratis ongkir (&gt;35 km):</label>
+      <input type="number" id="minFreePcs" value="65" />
+      <button onclick="updateFuel()">Set</button>
+    </div>
+
+    <div class="form-group">
+      <label for="jarakInput">Hitung ongkir untuk jarak (km):</label>
+      <input type="number" id="jarakInput" placeholder="cth: 30" />
+      <button onclick="calcOngkir()">Hitung</button>
+    </div>
+
+    <div id="ongkirResult" class="result-box"></div>
+
+    <div class="table-wrapper">
+      <table id="ongkirTable">
+        <thead>
+          <tr>
+            <th>Jarak</th>
+            <th>Tarif Normal</th>
+            <th>Gratis Ongkir (min pcs)</th>
+            <th>Estimasi BBM (PP)</th>
+            <th>Sisa untuk jasa</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h2>📋 Tabel Tarif Standar</h2>
+
+    <div class="table-wrapper">
+      <table class="tabel-info">
+        <thead>
+          <tr>
+            <th>Jarak</th>
+            <th>Tarif Normal</th>
+            <th>Gratis Ongkir (min pcs)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>0–3 km</td><td>Rp 5.000</td><td>10 pcs</td></tr>
+          <tr><td>3–5 km</td><td>Rp 8.000</td><td>15 pcs</td></tr>
+          <tr><td>5–8 km</td><td>Rp 10.000</td><td>20 pcs</td></tr>
+          <tr><td>8–12 km</td><td>Rp 13.000</td><td>25 pcs</td></tr>
+          <tr><td>12–15 km</td><td>Rp 15.000</td><td>30 pcs</td></tr>
+          <tr><td>15–20 km</td><td>Rp 19.000</td><td>35 pcs</td></tr>
+          <tr><td>20–25 km</td><td>Rp 23.000</td><td>45 pcs</td></tr>
+          <tr><td>25–30 km</td><td>Rp 30.000</td><td>55 pcs</td></tr>
+          <tr><td>30–35 km</td><td>Rp 35.000</td><td>65 pcs</td></tr>
+          <tr><td>&gt;35 km</td><td>Rp 40.000+ / nego admin</td><td>75+ pcs</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note">
+      ✔️ <span>Berlaku untuk semua varian: Frozen / Original / Mentai</span><br />
+      ✔️ <span>Gratis ongkir sesuai minimal pcs di tabel, jika pembelian kurang dari minimal pcs, tarif normal berlaku</span><br />
+      ✔️ <span>Untuk jarak &gt;35 km, hubungi admin di WA: 0877-7713-1904</span>
+    </p>
   </div>
-  <button onclick="updateFuel()">Update</button>
-</div>
 
-<div class="input-box">
-  <div class="form-row">
-    <label for="minFreePcs">Minimal pcs gratis ongkir (&gt;35 km):</label>
-    <input type="number" id="minFreePcs" value="65">
-  </div>
-  <button onclick="updateFuel()">Set</button>
-</div>
-
-<div class="input-box">
-  <div class="form-row">
-    <label for="jarakInput">Hitung ongkir untuk jarak (km):</label>
-    <input type="number" id="jarakInput" placeholder="cth: 30">
-  </div>
-  <button onclick="calcOngkir()">Hitung</button>
-  <div id="ongkirResult" class="result-box"></div>
-</div>
-
-<table id="ongkirTable">
-  <thead>
-    <tr>
-      <th>Jarak</th>
-      <th>Tarif Normal</th>
-      <th>Gratis Ongkir (min pcs)</th>
-      <th>Estimasi BBM (PP)</th>
-      <th>Sisa untuk jasa</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-<h1>💸 Tarif Ongkir Dimsum</h1>
-<table class="tabel-info">
-  <thead>
-    <tr>
-      <th>Jarak</th>
-      <th>Tarif Normal</th>
-      <th>Gratis Ongkir (min pcs)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>0–3 km</td><td>Rp 5.000</td><td>10 pcs</td></tr>
-    <tr><td>3–5 km</td><td>Rp 8.000</td><td>15 pcs</td></tr>
-    <tr><td>5–8 km</td><td>Rp 10.000</td><td>20 pcs</td></tr>
-    <tr><td>8–12 km</td><td>Rp 13.000</td><td>25 pcs</td></tr>
-    <tr><td>12–15 km</td><td>Rp 15.000</td><td>30 pcs</td></tr>
-    <tr><td>15–20 km</td><td>Rp 19.000</td><td>35 pcs</td></tr>
-    <tr><td>20–25 km</td><td>Rp 23.000</td><td>45 pcs</td></tr>
-    <tr><td>25–30 km</td><td>Rp 30.000</td><td>55 pcs</td></tr>
-    <tr><td>30–35 km</td><td>Rp 35.000</td><td>65 pcs</td></tr>
-    <tr><td>&gt;35 km</td><td>Rp 40.000+ / nego admin</td><td>75+ pcs</td></tr>
-  </tbody>
-</table>
-
-<p class="note">
-  ✔️ <span style="color:red;">Berlaku untuk semua varian: Frozen / Original / Mentai</span><br>
-  ✔️ <span style="color:red;">Gratis ongkir sesuai minimal pcs di tabel, jika pembelian kurang dari minimal pcs, tarif normal berlaku</span><br>
-  ✔️ <span style="color:red;">Untuk jarak &gt;35 km, hubungi admin di WA: 0877-7713-1904</span>
-</p>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

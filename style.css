@@ -1,91 +1,118 @@
-.input-box {
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Umum */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Heading */
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form */
+.form-group {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
-.form-row {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-row label {
+.form-group label {
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-.input-box input {
+.form-group input {
   padding: 10px;
   font-size: 16px;
-  width: 100%;
-  max-width: 300px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
-.input-box button {
-  padding: 10px;
-  font-size: 16px;
-  background: #007bff;
-  color: white;
+.form-group button {
+  width: fit-content;
+  padding: 10px 20px;
+  background-color: #007bff;
   border: none;
   border-radius: 4px;
+  color: white;
+  font-size: 14px;
   cursor: pointer;
-  width: fit-content;
 }
 
-.input-box button:hover {
-  background: #0056b3;
+.form-group button:hover {
+  background-color: #0056b3;
 }
 
-.result-box {
-  margin-top: 10px;
-  font-weight: bold;
+/* Tabel */
+.table-wrapper {
+  overflow-x: auto;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  overflow-x: auto;
-  display: block;
+  margin: 20px 0;
+  min-width: 400px;
 }
 
 th, td {
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
-  white-space: nowrap;
-}
-
-.note {
-  margin-top: 20px;
-  background: #f9f9f9;
-  padding: 15px;
-  border-left: 5px solid red;
   font-size: 14px;
 }
 
+th {
+  background-color: #f1f1f1;
+}
+
+/* Hasil */
+.result-box {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Catatan */
+.note {
+  background-color: #fff3cd;
+  color: #856404;
+  border-left: 5px solid #ffc107;
+  padding: 15px;
+  font-size: 14px;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+.note span {
+  color: #d8000c;
+  font-weight: bold;
+}
+
+/* Responsif */
 @media (max-width: 600px) {
-  h1 {
-    font-size: 1.2em;
-  }
-
-  .input-box input,
-  .input-box button {
-    font-size: 14px;
+  .form-group input,
+  .form-group button {
     width: 100%;
+    font-size: 15px;
   }
 
-  .note {
+  table {
     font-size: 13px;
   }
-
-  th, td {
-    font-size: 14px;
-    padding: 8px;
-  }
-}
-body {
-  padding: 20px;
-  font-family: sans-serif;
 }
