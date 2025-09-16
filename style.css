@@ -1,0 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background: #fafafa;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background: #f0f0f0;
+}
+
+.note {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 15px;
+}
+
+.input-box {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.input-box input {
+  padding: 5px;
+  width: 120px;
+}
+
+button {
+  padding: 6px 12px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.result-box {
+  margin-top: 12px;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+.tabel-info {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.tabel-info th {
+  background: #f0f0f0;
+}
